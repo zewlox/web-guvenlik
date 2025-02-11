@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Web Güvenlik (USOM)",
+    "description": "USOM API kullanarak güvenli olmayan siteleri tespit eden bir chrome uzantısı.",
+    "version": "1.0",
+    "permissions": ["storage","tabs", "activeTab", "scripting"],
+    "host_permissions": ["<all_urls>"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["content.js"]
+      }
+    ],
+    "icons": {
+      "48": "icon.png"
+    }
+  }
