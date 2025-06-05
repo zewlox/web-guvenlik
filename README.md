@@ -9,7 +9,7 @@ Bu Chrome uzantısı, USOM API kullanarak web sitelerinin güvenli olup olmadı�
 ## Kurulum
 
 1. **Proje dosyasını indirin** veya Releases kısmından **Source code (zip)** olarak indirin.
-2. ZIP dosyasını açın.
+2. ZIP dosyasını ayıklayın. 
 3. **Chrome tarayıcınızı açın** ve adres çubuğuna `chrome://extensions/` yazın.
 4. Sağ üstteki **"Geliştirici Modu"nu** etkinleştirin.
 5. **"Paketlenmemiş öğe yükle"** seçeneğine tıklayın.
