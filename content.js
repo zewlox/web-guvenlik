@@ -91,13 +91,8 @@ function showPopup(domain) {
           color: white;
           font-size: 14px;
       }
-      .usom-leave {
-          background: #4caf50;
-          margin-right: 10px;
-      }
-      .usom-stay {
-          background: #d32f2f;
-      }
+      .usom-leave { background: #4caf50; margin-right: 10px; }
+      .usom-stay { background: #d32f2f; }
   `;
   document.head.appendChild(style);
 
@@ -107,23 +102,42 @@ function showPopup(domain) {
   const popup = document.createElement('div');
   popup.classList.add('usom-popup');
 
-  popup.innerHTML = `
-    <h2 class="usom-title">Güvenlik Uyarısı</h2>
-    <p class="usom-text">Bu site (<strong>${domain}</strong>) USOM tarafından zararlı olarak işaretlenmiştir.</p>
-    <div class="usom-buttons">
-      <button id="leave-site-btn" class="usom-btn usom-leave">Siteden Ayrıl</button>
-      <button id="stay-site-btn" class="usom-btn usom-stay">Devam Et</button>
-    </div>
-  `;
+  const title = document.createElement('h2');
+  title.classList.add('usom-title');
+  title.textContent = 'Güvenlik Uyarısı';
+
+  const text = document.createElement('p');
+  text.classList.add('usom-text');
+  text.textContent = 'Bu site (' + domain + ') USOM tarafından zararlı olarak işaretlenmiştir.';
+
+  const buttons = document.createElement('div');
+  buttons.classList.add('usom-buttons');
+
+  const leaveBtn = document.createElement('button');
+  leaveBtn.id = 'leave-site-btn';
+  leaveBtn.className = 'usom-btn usom-leave';
+  leaveBtn.textContent = 'Siteden Ayrıl';
+
+  const stayBtn = document.createElement('button');
+  stayBtn.id = 'stay-site-btn';
+  stayBtn.className = 'usom-btn usom-stay';
+  stayBtn.textContent = 'Devam Et';
+
+  buttons.appendChild(leaveBtn);
+  buttons.appendChild(stayBtn);
+
+  popup.appendChild(title);
+  popup.appendChild(text);
+  popup.appendChild(buttons);
 
   overlay.appendChild(popup);
   document.body.appendChild(overlay);
 
-  document.getElementById('leave-site-btn').addEventListener('click', () => {
+  leaveBtn.addEventListener('click', () => {
       window.location.href = 'https://google.com';
   });
 
-  document.getElementById('stay-site-btn').addEventListener('click', () => {
+  stayBtn.addEventListener('click', () => {
       chrome.storage.local.get(['ignoredSites'], (result) => {
           const ignoredSites = result.ignoredSites || [];
           if (!ignoredSites.includes(domain)) {
@@ -132,9 +146,7 @@ function showPopup(domain) {
           }
       });
 
-      const overlay = document.getElementById('usom-overlay');
-      if (overlay) {
-          overlay.remove();
-      }
+      overlay.remove();
   });
 }
+
