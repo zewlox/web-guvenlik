@@ -6,6 +6,9 @@ Bu Chrome uzantısı, USOM API kullanarak web sitelerinin güvenli olup olmadı�
 - **Güvenlik Kontrolü:** Aktif olan web sitesinin güvenli olup olmadığını tespit eder.
 - **Hızlı Uyarı:** Güvenli olmayan siteler hakkında kullanıcıyı uyarır.
 
+## FireFox Kurulum
+[Eklentiye Git](https://addons.mozilla.org/en-US/firefox/addon/web-g%C3%BCvenlik-usom/)
+
 ## Kurulum
 
 1. **Proje dosyasını indirin** veya Releases kısmından **Source code (zip)** olarak indirin.
